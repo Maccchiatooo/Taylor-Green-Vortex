@@ -193,8 +193,8 @@ void LBM::Initialize()
     // macroscopic value initialization
     Kokkos::parallel_for(
         "initialize", mdrange_policy3({0, 0, 0}, {lx, ly, lz}), KOKKOS_CLASS_LAMBDA(const int i, const int j, const int k) {
-            ua(i, j, k) = u0 * sin((double)((double)(i - ghost) / (double)l_l[0] * 2.0 * pi))  * cos((double)((double)(j-ghost)/(double)l_l[1]*2.0*pi)) * cos((double)((double)(k-ghost)/(double)l_l[2]*2.0*pi));
-            va(i, j, k) = -u0 * cos((double)((double)(i - ghost) / (double) l_l[0] * 2.0 * pi))* sin((double)((double)(j-ghost)/(double)l_l[1]*2.0*pi)) * cos((double)((double)(k-ghost)/(double)l_l[2]*2.0*pi));
+            ua(i, j, k) = u0 * sin((double)((double)(i - ghost+x_lo) / (double)glx * 2.0 * pi))  * cos((double)((double)(j-ghost+y_lo)/(double)gly*2.0*pi)) * cos((double)((double)(k-ghost+z_lo)/(double)glz*2.0*pi));
+            va(i, j, k) = -u0 * cos((double)((double)(i - ghost+x_lo) / (double) glx * 2.0 * pi))* sin((double)((double)(j-ghost+y_lo)/(double)gly*2.0*pi)) * cos((double)((double)(k-ghost+z_lo)/(double)glz*2.0*pi));
             wa(i, j, k) = 0;
             p(i, j, k) = 0;
             rho(i, j, k) = rho0;
