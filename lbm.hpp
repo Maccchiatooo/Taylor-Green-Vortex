@@ -101,7 +101,7 @@ struct CommHelper
 
         // 8 points
 
-        backrightdown  = (px == rx - 1 )  ? frontdown-rx+1 : backdown + 1;
+        backrightdown  = (px == rx - 1 )  ? backdown-rx+1 : backdown + 1;
         frontrightdown = (px == rx - 1 )  ? frontdown-rx+1 : frontdown + 1;
         frontrightup   = (px == rx - 1 )  ? frontup-rx+1   : frontup + 1;
         backrightup    = (px == rx - 1 )  ? backup-rx+1    : backup + 1;
